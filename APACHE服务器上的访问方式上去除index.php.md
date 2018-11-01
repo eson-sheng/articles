@@ -1,0 +1,31 @@
+# 在`APACHE`服务器上的访问方式上去除`index.php`
+> 下面我说下`apache`下 ，如何去掉`URL`里面的`index.php` 
+例如: 你原来的路径是`localhost/index.php/index` 
+改变后的路径是`localhost/index` 
+
+- `httpd.conf`配置文件中加载了`mod_rewrite.so`模块 //在APACHE里面去配置 
+`#LoadModule rewrite_module modules/mod_rewrite.so`把前面的警号去掉 
+
+- 在`APACHE`里面去配置 ，将里面的`AllowOverride None`都改为`AllowOverride All`  
+注意：修改之后一定要重启`apache`服务。 
+
+- 确保`URL_MODEL`设置为`2`， (`url`重写模式). 
+在项目的配置文件里写  
+```js
+return Array( 
+    'URL_MODEL' => '2', 
+); 
+```
+- `.htaccess`文件必须放到跟目录下  
+这个文件里面加：  
+```apache
+RewriteEngine on 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteRule ^(.*)$ index.php/$1 [L] 
+```
+补充: `windows`里面不能创建`.htaccess`，下面我说下创建方法  
+新建任何一个文件，然后打开， 点击另存为 (文件类型选择所有)，这样就可以创建了 
+呵呵， 剩下的就是 你自己去测试了， 赶紧去试试把
+
+[hermit auto="1" loop="0" unexpand="1" fullheight="0"]remote#:6[/hermit]

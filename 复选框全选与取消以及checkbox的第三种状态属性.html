@@ -1,0 +1,65 @@
+    <title>复选框的表现形式</title>
+    <div>
+    <fieldset>
+    <legend>复选框全选与取消的应用：</legend>
+        <p>关于<code>indeterminate</code>属性</p>
+        <p>视觉上，<code>checkbox</code>有三种状态：<code>checked</code>、<code>unchecked</code>、<code>indeterminate</code>（不确定的）。看起来就像这样子：</p>
+        <ul>
+            <li>
+                <input type="checkbox" id="checkall">
+                <label for="value1">全选/取消</label>
+            </li>
+            <li>
+                <ul id="checklist">
+                    <li>
+                        <input type="checkbox" name="arr[]" value="1">
+                        <label for="value1">value1</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="arr[]" value="2">
+                        <label for="value1">value2</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="arr[]" value="3">
+                        <label for="value1">value3</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="arr[]" value="4">
+                        <label for="value1">value4</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" name="arr[]" value="5">
+                        <label for="value1">value5</label>
+                    </li>
+                </ul>                
+            </li>
+        </ul> 
+        <p>对于<code>indeterminate</code>状态的<code>checkbox</code>需要注意的是：无法在<code>HTML</code>中设置<code>checkbox</code>的状态为<code>indeterminate</code>。因为<code>HTML</code>中没有<code>indeterminate</code>这个属性，可以通过<code>Javascript</code>脚本来设置它：</p>
+        <pre>
+            var checkbox = document.getElementById("some-checkbox");
+            checkbox.indeterminate = true;</pre>
+        <p>或者通过<code>jQuery</code>来设置：</p>
+        <pre>
+            $("#some-checkbox").prop("indeterminate", true); // prop is jQuery 1.6+</pre>
+        <P>其实<code>checkbox</code>的<code>indeterminate</code>状态实际就是视觉上的，但是它的值仍然有<code>checked</code>或<code>unchecked</code>，这意味着<code>indeterminate</code>状态的<code>checkbox</code>的真正价值只在于用户界面上更友好！</P>
+    </fieldset>
+    </div>
+    <style type="text/css">
+        .blog-post .section-text p {
+             margin-bottom: 0 !important; 
+        }
+        .page:not(.woocommerce-page) .blog-post .section-text p {
+             margin: 0 !important; 
+        }
+    </style>
+    <p>最后我本页面的代码效果如下：</p>
+<pre><p></p><p>&lt;!DOCTYPE html&gt;</p><p>&lt;html&gt;</p><p>&lt;head&gt;</p><p>&nbsp; &nbsp; &lt;title&gt;复选框的表现形式&lt;/title&gt;</p><p>&lt;/head&gt;</p><p>&nbsp; &nbsp; &lt;div&gt;</p><p>&nbsp; &nbsp; &lt;fieldset&gt;</p><p>&nbsp; &nbsp; &lt;legend&gt;复选框全选与取消的应用：&lt;/legend&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;p&gt;indeterminate&lt;/p&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;ul&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;input type="checkbox" id="checkall"&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;label for="value1"&gt;全选/取消&lt;/label&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;ul id="checklist"&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;input type="checkbox" name="arr[]" value="1"&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;label for="value1"&gt;value1&lt;/label&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;input type="checkbox" name="arr[]" value="2"&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;label for="value1"&gt;value2&lt;/label&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;input type="checkbox" name="arr[]" value="3"&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;label for="value1"&gt;value3&lt;/label&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;input type="checkbox" name="arr[]" value="4"&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;label for="value1"&gt;value4&lt;/label&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;input type="checkbox" name="arr[]" value="5"&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;label for="value1"&gt;value5&lt;/label&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/ul&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/li&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &lt;/ul&gt;&nbsp;</p><p>&nbsp; &nbsp; &lt;/fieldset&gt;</p><p>&lt;body&gt;</p><p>&nbsp; &nbsp; &lt;script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"&gt;&lt;/script&gt;</p><p>&nbsp; &nbsp; &lt;script type="text/javascript"&gt;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; $(function(){</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /*全选按钮状态显示判断*/</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $("#checklist").find("input[type='checkbox']").click(function(){</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /*初始化选择为TURE*/</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $("#checkall")[0].checked = true;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /*获取未选中的*/</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; var nocheckedList = new Array();&nbsp;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $("#checklist").find('input:not(:checked)').each(function() {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; nocheckedList.push($(this).val());&nbsp; &nbsp;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /*状态显示*/</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if (nocheckedList.length == $("#checklist").find('input').length) {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $("#checkall")[0].checked = false;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $("#checkall")[0].indeterminate = false;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } else if (nocheckedList.length) {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $("#checkall")[0].indeterminate = true;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } else {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $("#checkall")[0].indeterminate = false;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // 全选/取消</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $("#checkall").click(function(){</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; // alert(this.checked);</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; if ($(this).is(':checked')) {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $("#checklist").find('input').each(function(){</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $(this).prop("checked",true);</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; } else {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $("#checklist").find('input').each(function(){</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $(this).removeAttr("checked",false);</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; $(this).prop("checked",false); // 根据官方的建议：具有 true 和 false 两个属性的属性，如 checked, selected 或者 disabled 使用prop()，其他的使用 attr()</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; });</p><p>&nbsp; &nbsp; &nbsp; &nbsp; });</p><p>&nbsp; &nbsp; &lt;/script&gt;</p><p>&lt;/body&gt;</p><p>&lt;/html&gt;</p><p><br></p><p></p></pre>
+
+    <p>Thanks♪(･ω･)ﾉ 感谢你长得那么好看还来看我的博客！see you around ~</p>
+<body>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript">$(function(){$("#checklist").find("input[type='checkbox']").click(function(){$("#checkall")[0].checked=true;var nocheckedList=new Array();$("#checklist").find("input:not(:checked)").each(function(){nocheckedList.push($(this).val())});if(nocheckedList.length==$("#checklist").find("input").length){$("#checkall")[0].checked=false;$("#checkall")[0].indeterminate=false}else{if(nocheckedList.length){$("#checkall")[0].indeterminate=true}else{$("#checkall")[0].indeterminate=false}}});$("#checkall").click(function(){if($(this).is(":checked")){$("#checklist").find("input").each(function(){$(this).prop("checked",true)})}else{$("#checklist").find("input").each(function(){$(this).removeAttr("checked",false);$(this).prop("checked",false)})}})});</script>
+</body>
+</html>
+
+[hermit auto="1" loop="0" unexpand="1" fullheight="0"]remote#:22[/hermit]
