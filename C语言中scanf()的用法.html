@@ -1,0 +1,117 @@
+<h2 id="c语言中scanf的用法" data-source-line="1"><strong>C语言中scanf()的用法！</strong></h2>
+<blockquote data-source-line="2">scanf简易讲解</blockquote>
+<p data-source-line="4"><em>scanf 原型：</em></p>
+
+<pre data-source-line="5"><code class="hljs"><span class="hljs-meta"># <span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">scanf</span><span class="hljs-params">( <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *format, ... )</span></span>;</code></pre>
+<p data-source-line="9"><code>scanf()</code>是C语言中的一个输入函数。与<code>printf</code>函数一样，都被声明在头文件<code>stdio.h</code>里，因此在使用scanf函数时要加上<code>#include &lt;stdio.h&gt;</code>。它是格式输入函数，即按用户指定的格式从键盘上把数据输入到指定的变量之中。</p>
+
+<h6 id="例使用scanf函数输入数据" data-source-line="11"><a class="markdownIt-Anchor" href="#例使用scanf函数输入数据"></a>例：使用scanf函数输入数据。</h6>
+
+<hr />
+
+<pre data-source-line="14"><code class="hljs"><span class="hljs-comment">#include &lt;stdio.h&gt;</span>
+<span class="hljs-keyword">int</span> main(void)
+{
+    <span class="hljs-keyword">int</span> a,b,c;
+    <span class="hljs-keyword">printf</span>(<span class="hljs-string">"Give me the value of a,b,c seperated with whitespaces:\n"</span>);
+    scanf(<span class="hljs-string">"%d%d%d"</span>,&amp;a,&amp;b,&amp;c);
+    <span class="hljs-keyword">printf</span>(<span class="hljs-string">"a=%d,b=%d,c=%d\n"</span>,a,b,c);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}</code></pre>
+<p data-source-line="25">&amp;a,&amp;b,&amp;c中的&amp;是寻址操作符，&amp;a表示对象a在内存中的地址。变量a，b，c的地址是在编译阶段分配的（存储顺序由编译器决定）。 这里注意：如果scanf中%d是连着写的如“%d%d%d”,在输入数据时，数据之间不可以用逗号分隔，只能用空白字符（空格或tab键或者回车键）分隔——“2 （空格）3（tab） 4” 或 “2（tab）3（回车）4”等。若是“%d,%d,%d”，则在输入数据时需要加“,”，如“2,3,4”。</p>
+
+
+<hr />
+<p data-source-line="29">输入格式说明符前缀为百分号(%)，告诉 scanf() 下次读入何种数据类型。这些格式说明符的清单如下表所示：</p>
+
+<table data-source-line="31">
+<thead>
+<tr>
+<th>代 码</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%a</code></td>
+<td>读浮点值(仅适用于 C99)</td>
+</tr>
+<tr>
+<td><code>%A</code></td>
+<td>读浮点值(仅适用于 C99)</td>
+</tr>
+<tr>
+<td><code>%c</code></td>
+<td>读单字符</td>
+</tr>
+<tr>
+<td><code>%d</code></td>
+<td>读十进制整数</td>
+</tr>
+<tr>
+<td><code>%i</code></td>
+<td>读十进制、八进制、十六进制整数</td>
+</tr>
+<tr>
+<td><code>%e</code></td>
+<td>读浮点数</td>
+</tr>
+<tr>
+<td><code>%E</code></td>
+<td>读浮点数</td>
+</tr>
+<tr>
+<td><code>%f</code></td>
+<td>读浮点数</td>
+</tr>
+<tr>
+<td><code>%F</code></td>
+<td>读浮点数(仅适用于 C99)</td>
+</tr>
+<tr>
+<td><code>%g</code></td>
+<td>读浮点数</td>
+</tr>
+<tr>
+<td><code>%G</code></td>
+<td>读浮点数</td>
+</tr>
+<tr>
+<td><code>%o</code></td>
+<td>读八进制数</td>
+</tr>
+<tr>
+<td><code>%s</code></td>
+<td>读字符串</td>
+</tr>
+<tr>
+<td><code>%x</code></td>
+<td>读十六进制数</td>
+</tr>
+<tr>
+<td><code>%X</code></td>
+<td>读十六进制数</td>
+</tr>
+<tr>
+<td><code>%p</code></td>
+<td>读指针值</td>
+</tr>
+<tr>
+<td><code>%n</code></td>
+<td>至此已读入值的等价字符数</td>
+</tr>
+<tr>
+<td><code>%u</code></td>
+<td>读无符号十进制整数</td>
+</tr>
+<tr>
+<td><code>%[ ]</code></td>
+<td>扫描字符集合</td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td>读 % 符号(百分号)</td>
+</tr>
+</tbody>
+</table>
