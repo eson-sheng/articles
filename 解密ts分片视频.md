@@ -1,4 +1,5 @@
 # 解密ts分片视频
+> AES-128 加密的 ts 视频文件如何解密合并
 
 新的一年，来了。
 和往常一样，又是一段养生朋克的日子，等待着那笔早该入手的间歇性资本主义安慰。
@@ -8,7 +9,7 @@
 仿佛这个世界又一次成为了我的敌人... 废话不多说，一起开始撸代码做工具下载小视频吧 ！~ 
 
 ## `FFmpeg`如何加密视频
-### 1.获取加密用16字节key，并查看其值。
+#### 1.获取加密用16字节key，并查看其值。
 
 ```sh
 $ openssl rand 16 > enc.key
@@ -17,7 +18,7 @@ $ xxd enc.key
 ![查看enc.key的值](https://blog.eson.site/wp-content/uploads/2020/01/hls1.png)
 如图查看`enc.key`的值为`000b92f10d9f69ab44c4956f22270f7a`
 
-### 2.获取加密用iv并查看其值。
+#### 2.获取加密用iv并查看其值。
 
 ```sh
 $ openssl rand -hex 16 > enc.iv.txt
@@ -26,7 +27,7 @@ $ xxd enc.iv.txt
 ![查看偏移量enc.iv.txt的值](https://blog.eson.site/wp-content/uploads/2020/01/hls2.png)
 如图查看偏移量enc.iv.txt的值为`62b27e3171bb3c0613e4fb0985e00b83`
 
-### 3.生成`hls_key_info_file`其内容形式如下:
+#### 3.生成`hls_key_info_file`其内容形式如下:
 ```
 Key URI
 Path to key file
@@ -42,11 +43,11 @@ enc.key
 `:wq`
 **注意：第三行的哈希值`62b27e3171bb3c0613e4fb0985e00b83`默认是`32个0`不写也可以。**
 
-### 4.使用`FFmpeg`切片视频为加密的`hls`视频
->eg: `ffmpeg -i PRTD-24.mp4 -hls_time 10 -hls_key_info_file enc.keyinfo PRTD-24.m3u8`
+#### 4.使用`FFmpeg`切片视频为加密的`hls`视频
+>eg: `ffmpeg -i PRTD-24.mp4 -hls_time 10 -hls_key_info_file enc.keyinfo -hls_playlist_type vod -hls_segment_filename "PRTD_%d.ts" PRTD-24.m3u8`
 
 ```sh
-$ ffmpeg -i [filename.mp4] -hls_time 10 -hls_key_info_file enc.keyinfo [filename.m3u8]
+$ ffmpeg -i [filename.mp4] -hls_time 10 -hls_key_info_file enc.keyinfo -hls_playlist_type vod -hls_segment_filename "filename_%d.ts" [filename.m3u8]
 ```
 
 ![hls](https://blog.eson.site/wp-content/uploads/2020/01/hls4.png)
@@ -72,12 +73,23 @@ $ ffmpeg -i "concat:0.ts|1.ts|2.ts" -acodec copy -vcodec copy -absf aac_adtstoas
 [git@github.com:eson-sheng/download-m3u8-to-mp4.git](https://github.com/eson-sheng/download-m3u8-to-mp4)
 
 工具使用很简单：主要是找到`.m3u8`文件的地址。
-打开命令行输入 `php php download_m3u8.php --url https://xxx/index.m3u8` 就开始下载视频啦 ~
+打开命令行输入 `php download_m3u8.php --url https://xxx/index.m3u8` 就开始下载视频啦 ~
 
 
 上文中说的例举视频我已经放入仓库中的`demo`文件里，供大家参考学习哦`^_^`。
 
+## 视频快速下载方法
+> 可以直接使用[`FFmpeg`](http://www.ffmpeg.org/)的方法下载视频。
+
+eg:
+```
+ffmpeg -i https://localhost/playlist.m3u8 -c copy file_name.mp4
+```
+
+## 前端加载ts视频
+> 未完待续
+
 ------------
 
 Thanks♪(･ω･)ﾉ 感谢你长得那么好看还来看我的博客！see you around ~
-[hermit auto="1" loop="0" unexpand="1" fullheight="0"]remote#:32[/hermit]
+[hermit auto='1' loop='0' unexpand='1' fullheight='0']remote#:33[/hermit]
