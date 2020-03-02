@@ -87,7 +87,7 @@ ffmpeg -i https://localhost/playlist.m3u8 -c copy file_name.mp4
 ```
 
 ## 前端加载ts视频
-> 未完待续
+> 请关注此项目 [![movie](https://img.shields.io/badge/github-https%3A%2F%2Fgithub.com%2Feson--sheng%2Fmovie-ff69b4)](https://github.com/eson-sheng/movie) 超酷！
 
 ------------
 
