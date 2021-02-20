@@ -20,6 +20,13 @@
 git clone git@github.com:eson-sheng/gogs-hook.git
 ```
 
+- 设置秘钥
+复制文件`.example.env`为`.env`之后，密钥设置需要和web钩子的秘钥文本保持一致，此项目的`.example.env`有示例。
+
+```
+GOGS_SIGNATURE = '******'
+```
+
 - 部署nginx服务配置示例： 
 
 ```
